@@ -25,44 +25,6 @@ certificates.
 
 Laravel 12, Blade + Tailwind CSS v4 (via Vite), MySQL, `barryvdh/laravel-dompdf` for PDFs. No JavaScript framework required — the scoring UI uses native `<details>` accordions, so it works reliably on basic tablet browsers.
 
-## Setup
-
-This project was generated without network access to Packagist, so `vendor/`
-is **not** included. Run these commands on a machine with normal internet
-access:
-
-```bash
-composer install
-npm install
-
-cp .env.example .env
-php artisan key:generate
-
-# Create the database in MySQL first:
-mysql -u root -p -e "CREATE DATABASE tabulation_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-
-# Then set your credentials in .env (defaults shown, adjust as needed):
-#   DB_CONNECTION=mysql
-#   DB_HOST=127.0.0.1
-#   DB_PORT=3306
-#   DB_DATABASE=tabulation_system
-#   DB_USERNAME=root
-#   DB_PASSWORD=your_password
-
-php artisan migrate --seed
-php artisan storage:link      # needed for contestant photo uploads to be viewable
-
-npm run build                 # or `npm run dev` while developing
-php artisan serve
-```
-
-The seeder creates one admin account:
-
-- **Email:** `admin@tabulation.test`
-- **Password:** `password`
-
-Log in, change that password (or just create a new admin user and delete this
-one), then:
 
 1. **Judges** page → create a login for each judge (a temporary password is
    shown once — send it to them).
